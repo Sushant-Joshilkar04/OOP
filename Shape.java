@@ -1,21 +1,14 @@
 import java.util.Scanner;
 
-class Shape{
+abstract class Shape{
    protected double num1;
    protected double num2;
-
-    public Shape() {
-        num1 = 0;
-        num2 = 0;
-    }
     public Shape(double dim1, double dim2) {
         num1 = dim1;
         num2 = dim2;
     }
 
-    public double computeArea() {
-        return 0;
-    }
+    abstract public double computeArea();
 }
 
 class Triangle extends Shape{
@@ -46,8 +39,8 @@ public class Assignment_ {
         double base = sc.nextDouble();
         System.out.print("Enter height of the triangle: ");
         double height = sc.nextDouble();
-        Shape obj1 = new Shape(base, height);
-        System.out.println(obj1.computeArea());
+
+
         Shape triangle = new Triangle(base, height);
         double triangleArea = triangle.computeArea();
         System.out.println("Area of the triangle: " + triangleArea);
@@ -56,8 +49,7 @@ public class Assignment_ {
         double length = sc.nextDouble();
         System.out.print("Enter width of the rectangle: ");
         double width = sc.nextDouble();
-        Shape obj2 = new Shape(base, height);
-        System.out.println(obj2.computeArea());
+        
         Shape rectangle = new Rectangle(length, width);
         double rectangleArea = rectangle.computeArea();
         System.out.println("Area of the rectangle: " + rectangleArea);
