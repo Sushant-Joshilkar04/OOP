@@ -1,87 +1,115 @@
 import java.util.Scanner;
 
-class Company {
+class Comapny{
     protected String emp_name;
     protected int id;
     protected String address;
     protected String email;
     protected long phone;
 
-    Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner (System.in);
 
-    public Company(String emp_name, int id, String address, String email, long phone) {
-        this.emp_name = emp_name;
-        this.id = id;
-        this.address = address;
-        this.email = email;
-        this.phone = phone;
+    public void get_data(){
+        System.out.println("Enter Name: ");
+        this.emp_name=sc.next();
+        System.out.println("Enter ID: ");
+        this.id=sc.nextInt();
+        System.out.println("Enter Email id");
+        this.email=sc.next();
+        System.out.println("Enter Address: ");
+        this.address=sc.next();
+        System.out.println("Enter Mobile Number: ");
+        this.phone=sc.nextLong();
     }
 
-    
+    public void generatePaySlip(double sal){
+        System.out.println("Pay Slip");
+        System.out.println("Name: "+this.emp_name);
+        System.out.println("ID: "+this.id);
+        System.out.println("E-mail: "+this.email);
+        System.out.println("Address: "+this.address);
+        System.out.println("Mobile Number: "+this.phone);
+        double da=0.97*sal;
+        double hra=0.1*sal;
+        double pf=0.12*sal;
+        double fund=0.001*sal;
+        System.out.println("Gross salary: "+(sal + da + hra));
+        System.out.println("Net Salary= "+(sal + da + hra-(pf +fund)));
+
+    }
+
 }
 
-class Programmer extends Company {
-    protected double basic_pay;
-
-    public Programmer(String emp_name, int id, String address, String email, long phone, double basic_pay) {
-        super(emp_name, id, address, email, phone);
-        this.basic_pay = basic_pay;
-    }
-    
-    
+class Programmar extends Comapny{
+    double salary;
+public Programmar(){
+    get_data();
+    System.out.println("Enter Salary Amount: ");
+    salary=sc.nextFloat();
 }
 
-class TeamLead extends Company {
-    protected double basic_pay;
-
-    public TeamLead(String emp_name, int id, String address, String email, long phone, double basic_pay) {
-        super(emp_name, id, address, email, phone);
-        this.basic_pay = basic_pay;
-    }
-    
 }
 
-class AssistantProjectManager extends Company {
-    protected double basic_pay;
-
-    public AssistantProjectManager(String emp_name, int id, String address, String email, long phone, double basic_pay) {
-        super(emp_name, id, address, email, phone);
-        this.basic_pay = basic_pay;
+class Team_lead extends Comapny{
+    double salary;
+    public Team_lead(){
+        get_data();
+        System.out.println("Enter Salary Amount: ");
+        salary=sc.nextFloat();
     }
-    
-   
 }
 
-class ProjectManager extends Company {
-    protected double basic_pay;
-
-    public ProjectManager(String emp_name, int id, String address, String email, long phone, double basic_pay) {
-        super(emp_name, id, address, email, phone);
-        this.basic_pay = basic_pay;
+class Assistant_Project_Manager extends Comapny{
+    double salary;
+    public Assistant_Project_Manager(){
+       get_data();
+        System.out.println("Enter Salary Amount: ");
+        salary=sc.nextFloat();
     }
-    
-   
+}
+
+class Project_Manager extends Comapny{
+    double salary;
+    public Project_Manager(){
+        get_data();
+        System.out.println("Enter Salary Amount: ");
+        salary=sc.nextFloat();
+    }
 }
 
 
 public class Employee {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        int ans;
 
-        
-        Programmer programmer = new Programmer("John Doe", 1001, "123 Main St", "john@example.com", 1234567890, 50000);
-        TeamLead teamLead = new TeamLead("Alice Smith", 1002, "456 Elm St", "alice@example.com", 9876543210, 60000);
-        AssistantProjectManager assistantProjectManager = new AssistantProjectManager("Bob Johnson", 1003, "789 Oak St", "bob@example.com", 5555555555, 70000);
-        ProjectManager projectManager = new ProjectManager("Emily Brown", 1004, "101 Pine St", "emily@example.com", 7777777777, 80000);
-        
-       
-        System.out.println("Programmer Details:");
-        System.out.println("Name: " + programmer.emp_name);
-        System.out.println("ID: " + programmer.id);
-        System.out.println("Address: " + programmer.address);
-        System.out.println("Email: " + programmer.email);
-        System.out.println("Phone: " + programmer.phone);
-        System.out.println("Basic Pay: " + programmer.basic_pay);
-        
+        do{
+        System.out.println("Enter your choice:\n1. Programmer salary\n2.Team Lead salary\n3.Assistant Project Manager salary\n4.Project Manager salary");
+        int choice = sc.nextInt();
+        switch (choice) {
+            case 1:
+                Programmar programmer = new Programmar();
+                programmer.generatePaySlip(programmer.salary);
+                break;
+            case 2:
+                Team_lead teamLead = new Team_lead();
+                teamLead.generatePaySlip(teamLead.salary);
+                break;
+            case 3:
+                Assistant_Project_Manager assistantProjectManager = new Assistant_Project_Manager();
+                assistantProjectManager.generatePaySlip(assistantProjectManager.salary);
+                break;
+            case 4:
+                Project_Manager projectManager = new Project_Manager();
+                projectManager.generatePaySlip(projectManager.salary);
+                break;
+            default:
+                System.out.println("Enter Correct Choice!");
+        }
+
+        System.out.println("do you want to continue (yes=1)");
+        ans=sc.nextInt();
+    }while(ans==1);
+        System.out.println("Thank You!");
     }
 }
