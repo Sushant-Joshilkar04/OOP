@@ -11,13 +11,14 @@ class Comapny{
 
     public void get_data(){
         System.out.println("Enter Name: ");
-        this.emp_name=sc.next();
+        this.emp_name=sc.nextLine();
         System.out.println("Enter ID: ");
         this.id=sc.nextInt();
+        sc.nextLine();
         System.out.println("Enter Email id");
-        this.email=sc.next();
+        this.email=sc.nextLine();
         System.out.println("Enter Address: ");
-        this.address=sc.next();
+        this.address=sc.nextLine();
         System.out.println("Enter Mobile Number: ");
         this.phone=sc.nextLong();
     }
