@@ -57,20 +57,22 @@ class WeatherReport
         return sum/n;
     }
 
-    public static void main(String args[])
-    {
-        WeatherReport[] arr = new WeatherReport[5];
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter number of days: ");
+        int n=sc.nextInt();
+        WeatherReport[] arr = new WeatherReport[n];
 
-        for(int i=0;i<5;i++)
+        for(int i=0;i<n;i++)
         {
             arr[i] = new WeatherReport();
             arr[i].getData();
         }
 
-        System.out.println("Average of highest temp" + averageH(arr,5));
-        System.out.println("Average of lowest temp" + averageL(arr,5));
-        System.out.println("Average of amount of rain" + averageR(arr,5));
-        System.out.println("Average of amount of snow" + averageS(arr,5));
+        System.out.println("Average of highest temp: " + averageH(arr,n));
+        System.out.println("Average of lowest temp: " + averageL(arr,n));
+        System.out.println("Average of amount of rain: " + averageR(arr,n));
+        System.out.println("Average of amount of snow: " + averageS(arr,n));
 
     }
 }
