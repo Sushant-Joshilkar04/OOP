@@ -14,15 +14,15 @@ public class Complex {
 
     public static void add(Complex obj1,Complex obj2){
         float n1,n2;
-        n1=obj1.real-obj2.real;
-        n2=obj1.img-obj2.img;
+        n1=obj1.real+obj2.real;
+        n2=obj1.img+obj2.img;
         System.out.println("Answer is: "+n1+"+i"+n2);
     }
 
     public static void subtract(Complex obj1,Complex obj2){
         float n1,n2;
-        n1=obj1.real+obj2.real;
-        n2=obj1.img+obj2.img;
+        n1=obj1.real-obj2.real;
+        n2=obj1.img-obj2.img;
         System.out.println("Answer is: "+n1+"+i"+n2);
     }
     public static void mul(Complex obj1,Complex obj2){
